@@ -3,10 +3,14 @@ body {
 }
 
 .calculator__display {
-background-color: black;
-color: white;
-width: 40rem;
-height: 10rem;
+    display: flex;
+    align-items: end;
+    justify-content: right;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: black;
+    color: white;
+    width: 40rem;
+    height: 10rem;
 }
 
 .calculator__keys {
@@ -20,7 +24,7 @@ height: 10rem;
     columns: 15;
 }
 
-.key--equal{
+.key--equal {
     background-color: orange;
     text-align: center;
     grid-column-start: 4;
@@ -28,4 +32,3 @@ height: 10rem;
     grid-row-start: 2;
     grid-row-end: 6;
 }
-
