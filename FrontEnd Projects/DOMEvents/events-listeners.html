@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        div#area {
+            background-color: green;
+            color: aliceblue;
+            font: normal 20pt Arial;
+            height: 200px;
+            width: 200px;
+            line-height: 200px;
+            text-align: center;
+
+        }
+    </style>
+    <title>Eventos DOM</title>
+</head>
+
+<body>
+    <div id="area" onmouseenter="entrar()">
+        Interaja.
+    </div>
+
+    <script>
+
+        const div = document.getElementById("area");
+        let counter = 0
+        console.log(counter)
+
+        div.addEventListener('mouseout', sair)
+
+        //Lógica de troca de cores utilizando um EventListener
+        div.addEventListener("click", e => {
+            div.innerText = "Clicou!"
+            counter++
+            console.log(counter)
+
+            if (counter === 0) {
+                div.style.backgroundColor = "blue";
+            } 
+            if (counter === 1) {
+                div.style.backgroundColor = "red";
+            }
+            if (counter === 2) {
+                div.style.backgroundColor = "yellow";
+                counter = -1
+            }
+           
+
+        });
+
+
+        //Utilzada dentro do HTML com "onmouseenter"
+        function entrar() {
+            div.innerText = "Entrou!"
+        }
+
+        //Utilizada com addEventListener com "mouseout" 
+        function sair() {
+            div.innerText = "Saiu!"
+        }
+        
+
+    </script>
+</body>
+
+</html>

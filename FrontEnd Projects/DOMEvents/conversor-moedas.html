@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Medidas</title>
+    <style>
+        body{
+            background-color: purple;
+            color: white;
+
+        }
+
+        .titulo{
+            text-align: center;
+            border-radius: 30px;
+            background-color: blue;
+            height: 10%;
+            width: 90%;
+        }
+
+        .conversor{
+            padding-top: 10px;
+            text-align: center;
+            margin-left: 30%;
+            background-color: lightblue;
+            color: black;
+            height: 5rem;
+            width: 30rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="titulo">
+        <h1>Conversor de medidas!</h1>
+    </div>
+
+    <div class="conversor">
+        <form action="">
+            <label for="moeda1">Selecione sua conversão</label>
+            <br>
+            <select name="" id="selecao">
+                <option value="mmM">Milimetros para Metros</option>
+                <option value="kmM">Quilometros para Milhas</option>
+                <option value="kmF"> Quilômetro para Pés</option>
+            </select>
+            <input type="number" id="numero" inputmode="numeric" placeholder="Insira o valor...">
+            <button type="button" id="botao" onclick="calcula()">Converta!</button>
+        </form>
+        <p id="resultado"></p>
+    </div>
+
+
+    <script>
+        const selecao = document.getElementById('selecao')
+        const numero = document.getElementById('numero')
+        const btn = document.querySelector("#botao")
+        const resultado = document.getElementById('resultado')
+
+        function calcula() {
+            let a = numero.value
+            let b = 0
+            if (selecao.value === 'mmM') {
+                b = a / 1000
+                resultado.innerText = b
+            }
+            if (selecao.value === 'kmM') {
+                b = a / 1.609
+
+                resultado.innerText = b.toFixed(6)
+            }
+            if (selecao.value === 'kmF') {
+                resultado.innerText = a * 3281
+            }
+        }
+    </script>
+</body>
+
+</html>

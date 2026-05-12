@@ -37,9 +37,9 @@ keys.addEventListener('click', e => {
          } else {
             display.textContent = displayedNum + keyContent;
          }
-         console.log('number key!');
          calculator.dataset.previousKey = 'number'
       }
+
       if (
          action === 'add' ||
          action === 'subtract' ||
@@ -47,32 +47,41 @@ keys.addEventListener('click', e => {
          action === 'divide'
 
       ) {
+         const firstValue = calculator.dataset.firstValue;
+         const operator = calculator.dataset.operator;
+         const secondValue = displayedNum;
+
+         if (firstValue && operator && previousKeyType !== 'operator') {
+            display.textContent = calculate(firstValue, operator, secondValue)
+         }
+         
          key.classList.add('is-depressed');
-         calculator.dataset.previousKeyType = 'operator;'
-         console.log('operator key!');
          calculator.dataset.firstValue = displayedNum;
          calculator.dataset.operator = action;
+         calculator.dataset.previousKeyType = 'operator';
       }
 
+      // Não faça nada se a STRING tem um ponto
       if (action === 'decimal') {
          if (!displayedNum.includes('.')){
             display.textContent = displayedNum + '.';
+         } else if (previousKeyType === 'operator'){
+            display.textContent = '0.'
          }
-            
-         console.log('decimal key!');
+         calculator.dataset.previousKeyType = 'decimal';
       }
-
+      
       if (action === 'clear') {
-         console.log('clear key!')
+         calculator.dataset.previousKeyType = 'clear';
       }
-
+      
       if (action === 'calculate') {
          const firstValue = calculator.dataset.firstValue;
          const operator = calculator.dataset.operator;
          const secondValue = displayedNum;
-         console.log('calculate key!');
-
          display.textContent = calculate(firstValue, operator, secondValue);
+
+         calculator.dataset.previousKeyType = 'calculate';
       }
    }
 })
