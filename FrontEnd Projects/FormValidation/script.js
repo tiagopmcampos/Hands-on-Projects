@@ -5,9 +5,11 @@ const password = document.getElementById('password')
 const job = document.getElementById('job')
 const message = document.getElementById('message')
 
+
 form.addEventListener('submit', (event) => {
     event.preventDefault();
-    
+    const formData = new FormData(form)
+
     //verifica se o nome está vazio
     if(name.value === ''){
         alert("Por favor, preencha seu nome.")
@@ -38,9 +40,19 @@ form.addEventListener('submit', (event) => {
         return
     }
 
-    
+    const dataToSave = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        password: formData.get('password'),
+        job: formData.get('job'),
+        message: formData.get('message'),
+    }
+
+    console.log({dataToSave})
     //Se todos os campos estiverem preenchidos corretamente, envie o form
-    form.submit();
+    //form.submit();
+
+
 })
 
 //função que valida senha
